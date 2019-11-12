@@ -31,24 +31,24 @@ library(caret)
 ```
 
 ## Regression Tree
-* Our regression tree is trying to predict diabetes positive or negative based on 8 variables.
+* Our regression tree is trying to predict medv based on 13 predictors.
 * The output from our regression tree shows the number of the node in descending order.
-  + For example, the first split is at node '2)' with the variable glucose at <127.5 with 485 observations.
+  + For example, the first split is at node '2)' with the variable diabetes split by 'yes' or 'no'.
   + The corresponding deviance value at each node is the likelihood-ratio for testing the null hypothesis against the general alternative, or saturated model.
   + Terminal nodes are marked with a *
 * We can also look at the actual tree for easier visualization.
 * The cptable shows the relative error at differing numbers of terminal nodes.
-  + We see in the cptable that from node 1 to node 2, or the first split, the relative error dropped from 1 to 0.818.
+  + We see in the cptable that from node 1 to node 2, or the first split, the relative error dropped from 1.01 to 0.605
   + Each sequential node drops the relative error and the model stops after the error drop is <0.01, the default limit.
 * The cp plot shows the lowest cross validation error as "x-val relative error.' 
   + The complexity parameter, or CP, is used to optimize the size of the tree. 
   + If the cost of adding another variable to the tree from the current node is above the value of the CP, the tree does not continue to split.
-  + This coincides with the output of the tree as we can see that there were 6 levels of nodes and the xerror is lowest at CP 6.
+  + We can see the xerror is lowest at terminal node count 8 in the final plot so the tree stops splitting after 8 terminal nodes are determined.
 ```{r regression}
-data(PimaIndiansDiabetes)
+data(Boston)
 
-regression <- rpart(formula = diabetes ~ ., 
-                    data = PimaIndiansDiabetes, 
+regression <- rpart(formula = medv ~ ., 
+                    data = Boston, 
                     method = "anova"
                     )
 regression
