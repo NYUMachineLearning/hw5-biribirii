@@ -68,6 +68,7 @@ plotcp(regression)
 * After aggregating and building a single model, we then apply that model to our test set to predict our outcome of interest.
 * The OOB estimate, or error, are calculated from the observations left out in the bootstrap samples to estimate the misclassifcation error.
   + Our test error is consistently higher than the OOB error but not by much so it is a good estimate of the true test error.
+  + The higher test error may be because our training model is underfitted to the true distribution of our data.
   + We can also see that the OOB error stabilizes at ~90-100 trees.
 ```{r bagging}
 data(Carseats)
