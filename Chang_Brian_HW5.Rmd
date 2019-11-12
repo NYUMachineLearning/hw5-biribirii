@@ -33,7 +33,7 @@ library(caret)
 ## Regression Tree
 * Our regression tree is trying to predict medv based on 13 predictors.
 * The output from our regression tree shows the number of the node in descending order.
-  + For example, the first split is at node '2)' with the variable diabetes split by 'yes' or 'no'.
+  + For example, the first split is at node '2)' with the variable 'rm' split at <6.941
   + The corresponding deviance value at each node is the likelihood-ratio for testing the null hypothesis against the general alternative, or saturated model.
   + Terminal nodes are marked with a *
 * We can also look at the actual tree for easier visualization.
